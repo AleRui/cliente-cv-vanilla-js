@@ -1,4 +1,6 @@
 # Cliente CV Vanilla Javascript
+Recomendable crear un .editorconfig
+---
 $ git init
 ---
 $ npm init
