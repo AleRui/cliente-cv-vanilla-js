@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config build/webpack.dev",
-    "prod": "webpack --config build/webpack.prod"
+    "prod": "webpack --config build/webpack.prod",
+    "watch": "webpack --watch --info-verbosity verbose"
   },
   "author": "Ale Ruiz",
   "license": "ISC",

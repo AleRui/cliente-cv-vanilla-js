@@ -15,7 +15,8 @@ Config package.json webpack
 "scripts": {
     ...
     "dev": "webpack --config build/webpack.dev",
-    "prod": "webpack --config build/webpack.prod"
+    "prod": "webpack --config build/webpack.prod",
+    "watch": "webpack --watch --info-verbosity verbose"
     ...
 },
 ```
@@ -51,6 +52,10 @@ npm i --save-dev node-sass
 npm i --save-dev url-loader
 // Mergea varios archivos en uno
 npm i --save-dev webpack-
+
+//Modo de desarrollo con Watch
+$ npm run watch
+crear carpeta dist/ con archivo main.js
 
 // Compilar paquete en DEV
 $ npm run dev
