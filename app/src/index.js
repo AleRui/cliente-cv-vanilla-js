@@ -1,35 +1,51 @@
-import axios from 'axios';
 /**
  * JS Project Client CV
  */
+import axios from 'axios';
+
+const baseUrl = 'http://curriculum.ale:8082/api/'
+
+const user = {
+  email: 'alejandroruizlopez0@gmail.com',
+  password: 'password',
+  remember_me: true
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('Document is ready with Webpack!')
 
-  const url = 'http://curriculum.ale:8082/api/auth/login'
+  // getTokenWithHttpRequest(url, user)
+  //   .then((response) => { console.log(response) })
+  //   .catch((error) => { console.log('Failed!', error) })
 
-  const user = {
-    email: 'alejandroruizlopez0@gmail.com',
-    password: 'password',
-    remember_me: true
-  }
+  // getTokenWithFetch(url, user)
+  //   .then(data => { console.log(data) })
+  //   .catch((error) => { console.log('Failed!', error) })
 
-  getTokenWithHttpRequest(url, user)
-    .then((response) => { console.log(response) })
-    .catch((error) => { console.log('Failed!', error) })
-
-  getTokenWithFetch(url, user)
-    .then(data => { console.log(data) })
-    .catch((error) => { console.log('Failed!', error) })
-
-  getTokenWithAxios(url, user)
-    .then(data => { console.log(data) })
+  getTokenWithAxios(user)
+    .then(data => {
+      console.log(data)
+      
+      let token = data.access_token
+      getDataWithAxios('we/' + data.id_user, token).then(data => {
+        console.log(data)
+      })
+      
+      getDataWithAxios('studies/' + data.id_user, token).then(data => {
+        console.log(data)
+      })
+      
+      getDataWithAxios('letters/' + data.id_user, token).then(data => {
+        console.log(data)
+      })
+      
+    })
     .catch((error) => { console.log('Failed!', error) })
 
 }) // end DOMContentLoaded
 
 /** Getting Token withHttpRequest */
-function getTokenWithHttpRequest(url, user) {
+function getTokenWithHttpRequest(user) {
   return new Promise(function (resolve, reject) {
     let httpRequest = false
 
@@ -65,7 +81,7 @@ function getTokenWithHttpRequest(url, user) {
     //   }
     // }
 
-    httpRequest.open('POST', url, true) // method, url, async
+    httpRequest.open('POST', baseUrl + 'auth/login', true) // method, url, async
 
     httpRequest.onload = () => {
       // This is called even on 404 etc
@@ -91,9 +107,9 @@ function getTokenWithHttpRequest(url, user) {
 } // End getTokenWithHttpRequest
 
 /** Getting Token withHttpRequest. */
-async function getTokenWithFetch(url, user) {
+async function getTokenWithFetch(user) {
   // Opciones por defecto estan marcadas con un *
-  const response = await fetch(url, {
+  const response = await fetch(baseUrl + 'auth/login', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -110,9 +126,22 @@ async function getTokenWithFetch(url, user) {
 } // End getTokenWithFetch
 
 /** Getting Token with Axios */
-async function getTokenWithAxios (url, user) {
+async function getTokenWithAxios (user) {
   try {
-    const res = await axios.post(url, user);
+    const res = await axios.post(baseUrl + 'auth/login', user);
+    return res.data;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+async function getDataWithAxios (url, token) {
+  try {
+    let request = axios.create();
+    let authorization = 'Bearer ' + token
+    request.defaults.headers.common['Content-Type'] = 'application/json';
+    request.defaults.headers.common['Authorization'] = authorization;
+    const res = await request.get(baseUrl + url);
     return res.data;
   } catch (e) {
     console.error(e);
