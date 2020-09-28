@@ -62,3 +62,11 @@ crear carpeta dist/ con archivo main.js
 // Compilar paquete en DEV
 $ npm run dev
 crea carpeta dist/ con archivo custom-dev.js
+
+---
+
+### Libreria Axios pata peticiones Http
+
+```bash
+$ npm i --save-dev axios
+```
