@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+
+  loc-cliente-cv-php-apache:
+    build: ./
+    container_name: loc-cliente-cv-php-apache
+    volumes:
+      - ./config/my-httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.conf.ini
+      - ./config/xdebug.ini:/usr/local/etc/php/xdebug.ini
+      - ./app:/var/www/html
+      - ./logs:/var/log/apache2
+    ports:
+      - 8085:80
+      - 8445:443
