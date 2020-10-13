@@ -1,19 +1,38 @@
 # Cliente CV Vanilla Javascript
 Recomendable crear un .editorconfig
+
 ---
+
 $ git init
+
 ---
+
 $ npm init
+
 ---
+
+```bash
 $ npm install --save-dev eslint
-Configuración:
-$ npx eslint --init
-Para que revise:
-$ npx eslint src/js/index.js
----
-$ npm install webpack webpack-cli --save-dev
-Config package.json webpack
 ```
+
+Configuración:
+```bash
+$ npx eslint --init
+```
+
+Para que revise:
+```bash
+$ npx eslint src/js/index.js
+```
+
+---
+
+```bash
+$ npm install webpack webpack-cli --save-dev
+```
+
+Config package.json webpack
+```json
 "scripts": {
     ...
     "dev": "webpack --config build/webpack.dev",
@@ -22,46 +41,92 @@ Config package.json webpack
     ...
 },
 ```
+
 Configuraciones de webpack en carpeta build
+
 Librerias de los dos entorno DEV y PROD:
-// Babel
+
+##### Babel
+```bash
 npm i --save-dev @babel/core babel-loader @babel/preset-env
-// Limpiar
+```
+
+##### Clean
+```bash
 npm i --save-dev clean-webpack-plugin
-// Styles
+```
+
+##### Styles
+```bash
 npm i --save-dev sass-loader css-loader style-loader
-// Files like fonts
+```
+
+##### Files like fonts
+```bash
 npm i --save-dev file-loader
-// Prefijos
+```
+
+##### Prefixes
+```bash
 npm i --save-dev autoprefixer
-// Después de cargar todo el css (necesario para autoprefixer)
+```
+
+##### After charge all css (need to autoprefixer)
+```bash
 npm i --save-dev postcss-loader
+```
 
-Librerías necesarias PROD
-// Purgar CSS
+#### Libraries need PROD
+
+##### Purge CSS
+```bash
 npm i --save-dev purgecss
-// Uglify JS
+```
+
+##### Uglify JS
+```bash
 npm i --save-dev uglifyjs-webpack-plugin
-// Optimizar CSS
+```
+
+##### Optimize CSS
+```bash
 npm i --save-dev optimize-css-assets-webpack-plugin
+```
 
-// Crea el html file (No usado)
+##### Create html file (No used)
+```bash
 npm i --save-dev html-webpack-plugin
-// Compilar Sass (No usado)
+```
+
+##### Compile Sass (No used)
+```bash
 npm i --save-dev node-sass
-// Como file loader pero puede devolver un DataURL
-// si el archivo es más pequeño que el límite de bytes. (No usado)
+```
+
+##### Like file loader but can return one DataURL
+(If file file is smaller than bytes limit. No used)
+```bash
 npm i --save-dev url-loader
-// Mergea varios archivos en uno
+```
+
+##### Merge several files in one.
+```bash
 npm i --save-dev webpack-
+```
 
-//Modo de desarrollo con Watch
+##### Developed mode with Watch (detect changes)
+```bash
 $ npm run watch
-crear carpeta dist/ con archivo main.js
+```
 
-// Compilar paquete en DEV
+Create folder dist/ with file main.js
+
+// Compile package in DEV
+```bash
 $ npm run dev
-crea carpeta dist/ con archivo custom-dev.js
+```
+
+Create folder dist/ with file custom-dev.js
 
 ---
 
