@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Contstants
 const base = (pathToFile) => path.resolve(__dirname, pathToFile);
@@ -33,6 +34,7 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: ["@babel/plugin-transform-runtime"] // Async and others...
             },
           },
         ],
@@ -87,6 +89,11 @@ module.exports = {
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/*.php`, { nodir: true }),
     }),
+    new HtmlWebpackPlugin({
+      filename: '../home.html',
+      title: 'Cliente Alejandro Ruiz | CV PROD',
+      template: './src/home-dev.html'
+    })
   ],
   // Optimization
   optimization: {

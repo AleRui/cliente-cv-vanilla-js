@@ -49,6 +49,8 @@ Librerias de los dos entorno DEV y PROD:
 ##### Babel
 ```bash
 npm i --save-dev @babel/core babel-loader @babel/preset-env
+npm i --save-dev @babel/plugin-transform-runtime
+npm i --save @babel/runtime
 ```
 
 ##### Clean

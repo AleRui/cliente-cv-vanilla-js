@@ -2,6 +2,7 @@ const path = require("path"); // Path library
 //Plugins
 const autoprefixer = require("autoprefixer");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Contstants
 const base = (pathToFile) => path.resolve(__dirname, pathToFile);
@@ -30,6 +31,7 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: ["@babel/plugin-transform-runtime"] // Async and others...
             },
           },
         ],
@@ -57,7 +59,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "/fonts/[name].[ext]",
-              publicPath: "/curso-wp/wp-content/themes/laletheme/dist",
+              publicPath: "/dist/fonts",
             },
           },
         ],
@@ -70,7 +72,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "/assets/[name].[ext]",
-              publicPath: "/curso-wp/wp-content/themes/laletheme/dist",
+              publicPath: "/dist/assets",
             },
           },
         ],
@@ -81,5 +83,10 @@ module.exports = {
   // Plugins
   plugins: [
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: '../home.html',
+      title: 'Cliente Alejandro Ruiz | CV DEV',
+      template: './src/home-dev.html'
+    })
   ],
 };
