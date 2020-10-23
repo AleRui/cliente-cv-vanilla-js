@@ -71,12 +71,27 @@ npm i --save-dev file-loader
 ##### Prefixes
 ```bash
 npm i --save-dev autoprefixer
+npm i --save-dev autoprefixer@9.8.6
 ```
 
 ##### After charge all css (need to autoprefixer)
 ```bash
 npm i --save-dev postcss-loader
+npm i --save-dev postcss-loader@3.0.0
 ```
+
+##### Create html file
+```bash
+npm i --save-dev html-webpack-plugin
+```
+
+##### Extract CSS to file
+```bash
+npm i mini-css-extract-plugin
+```
+
+##### Dev Server
+npm i webpack-dev-server
 
 #### Libraries need PROD
 
@@ -95,12 +110,7 @@ npm i --save-dev uglifyjs-webpack-plugin
 npm i --save-dev optimize-css-assets-webpack-plugin
 ```
 
-##### Create html file (No used)
-```bash
-npm i --save-dev html-webpack-plugin
-```
-
-##### Compile Sass (No used)
+##### Compile Sass
 ```bash
 npm i --save-dev node-sass
 ```

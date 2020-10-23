@@ -2,6 +2,8 @@
  * JS Project Client CV
  */
 import axios from 'axios'
+/* CSS */
+import './scss/style.scss'
 
 const baseUrl = 'https://aleruizcv.herokuapp.com/'
 
@@ -13,6 +15,7 @@ const user = {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('Hola');
   getTokenWithAxios(user)
     .then(token => {
       if (token !== '' && token !== undefined && token !== null) {
