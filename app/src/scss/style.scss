@@ -1,9 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  background-color: green;
-}
-
 h1 {
   color: brown;
 }
@@ -13,4 +9,23 @@ h1 {
   transition: all .5s;
   user-select: none;
   background: linear-gradient(to bottom, white, black);
+}
+
+.general{
+  .col-info{
+    background-color: gray;
+  }
+  .col-details{
+    #work_experiences, #studies {
+      .work, .study{
+        .title {
+          font-weight: bolder;
+        }
+        .description{
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          font-size: .8em;
+        }
+      }
+    }
+  }
 }
